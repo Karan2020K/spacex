@@ -82,12 +82,18 @@
             <div class="card">
               <img :src="item.links.mission_patch" alt="Missions" style="width: 100%" />
               <div class="container">
-                <h4>
-                  <b>{{ item.rocket.mission_name }}</b>
+                <h4 class="text-blue">
+                  <b>{{ item.mission_name }}</b>
                 </h4>
-                <p>Mission ids:{{ item.mission_id }}</p>
-                <p>Launch Year:{{ item.launch_year }}</p>
-                <p>Successful Launch:{{ item.launch_success }}</p>
+                <p>
+                  Mission ids:<span class="text-blue">{{ item.mission_id }}</span>
+                </p>
+                <p>
+                  Launch Year:<span class="text-blue">{{ item.launch_year }} </span>
+                </p>
+                <p>
+                  Successful Launch:<span class="text-blue">{{ item.launch_success }} </span>
+                </p>
                 <p>Successful Landings:</p>
               </div>
             </div>
@@ -191,6 +197,10 @@ export default {
   padding-top: 1rem;
   padding-left: 1rem;
 }
+.text-blue {
+  color: blue;
+}
+,
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
