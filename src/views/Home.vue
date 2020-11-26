@@ -123,6 +123,7 @@ export default {
   methods: {
     launchYearChange(val) {
       this.activeBtn = val;
+
       this.launches();
     },
     launchSuccessLaunch(val) {
@@ -144,22 +145,34 @@ export default {
         method: "GET",
       };
       var url = "https://api.spaceXdata.com/v3/launches?limit=100";
-
+      var JsonData = {};
       if (this.activeBtn != "") {
         url = url + "&launch_year=" + this.activeBtn;
+        JsonData.launch_year = this.activeBtn;
       }
       if (this.activeBtnLaunch == "true") {
         url = url + "&launch_success=true";
+        JsonData.launch_success = true;
       }
       if (this.activeBtnLaunch == "false") {
         url = url + "&launch_success=false";
+        JsonData.launch_success = false;
       }
       if (this.activeBtnLanding == "true") {
         url = url + "&land_success=true";
+        JsonData.land_success = true;
       }
       if (this.activeBtnLanding == "false") {
         url = url + "&land_success=false";
+        JsonData.land_success = false;
       }
+      console.log(JsonData);
+      this.$router
+        .push({
+          name: "",
+          query: JsonData,
+        })
+        .catch(() => {});
 
       const rawResponse = await fetch(url, requestOptions);
       this.Data = [];
