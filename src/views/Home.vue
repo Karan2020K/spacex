@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-3 col-s-12">
         <div class="card">
-          <div style="text-align: left; margin-top: 10px; padding-top: 1rem; padding-left: 1rem">
+          <div class="filters">
             <b>Filters</b>
           </div>
           <div class="successful">Launch Year</div>
@@ -80,7 +80,7 @@
         <div class="row">
           <div class="col-3 col-s-3" v-for="(item, index) in Data" :key="index">
             <div class="card">
-              <img :src="item.links.mission_patch" alt="Missions" width: 100% />
+              <img :src="item.links.mission_patch" alt="Missions" style="width: 100%" />
               <div class="container">
                 <h4>
                   <b>{{ item.rocket.mission_name }}</b>
@@ -162,7 +162,7 @@ export default {
       }
 
       const rawResponse = await fetch(url, requestOptions);
-
+      this.Data = [];
       const response = await rawResponse.json();
       window.scrollTo(0, 0);
       this.Data = response;
@@ -172,6 +172,12 @@ export default {
 };
 </script>
 <style>
+.filters {
+  text-align: left;
+  margin-top: 10px;
+  padding-top: 1rem;
+  padding-left: 1rem;
+}
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -213,6 +219,7 @@ html {
 .header {
   color: black;
   padding-left: 15px;
+  text-align: left;
 }
 .btnCorner {
   border-radius: 25px;
